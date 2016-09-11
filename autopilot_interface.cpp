@@ -54,7 +54,6 @@
 
 #include "autopilot_interface.h"
 
-
 // ----------------------------------------------------------------------------------
 //   Time
 // ------------------- ---------------------------------------------------------------
@@ -237,7 +236,8 @@ read_messages()
 	bool success;               // receive success flag
 	bool received_all = false;  // receive only one message
 	Time_Stamps this_timestamps;
-
+//This is the temp msg for test gps
+    mavlink_gps_status_t  gps_msg;
 	// Blocking wait for new data
 	while ( !received_all and !time_to_exit )
 	{
@@ -261,6 +261,16 @@ read_messages()
 			// Handle Message ID
 			switch (message.msgid)
 			{
+                
+					case MAVLINK_MSG_ID_GPS_STATUS:
+				{
+					printf("MAVLINK_MSG_ID_HEARTBEAT\n");
+					mavlink_msg_gps_status_decode(&message, &gps_msg);
+				    printf("GPS USED %d\n",gps_msg.satellite_used);
+				    printf("Directon of Satelite %d [0:0degree, 255:360 degree]\n",gps_msg.satellite_azimuth);
+
+					break;
+                }
 
 				case MAVLINK_MSG_ID_HEARTBEAT:
 				{
