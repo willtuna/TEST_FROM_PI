@@ -1,0 +1,5 @@
+LOG----------------------------
+20160911
+
+set  COM_RC_IN_MODE to 2 , allowing virtual RC joystick
+CBRK_AIRSPD_CHK is to disalbe the checking process
