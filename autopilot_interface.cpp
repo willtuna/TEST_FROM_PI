@@ -237,7 +237,7 @@ read_messages()
 	bool received_all = false;  // receive only one message
 	Time_Stamps this_timestamps;
 //This is the temp msg for test gps
-    mavlink_gps_status_t  gps_msg;
+   mavlink_raw_pressure_t    test_msg;
 	// Blocking wait for new data
 	while ( !received_all and !time_to_exit )
 	{
@@ -261,19 +261,19 @@ read_messages()
 			// Handle Message ID
 			switch (message.msgid)
 			{
-                case MAVLINK_MSG_ID_GPS_STATUS:
+                case MAVLINK_MSG_ID_RAW_PRESSURE:
 				{
-					printf("MAVLINK_MSG_ID_HEARTBEAT\n");
-					mavlink_msg_gps_status_decode(&message, &gps_msg);
-				    printf("GPS USED %d\n",gps_msg.satellite_used);
-				    printf("Directon of Satelite %d [0:0degree, 255:360 degree]\n",gps_msg.satellite_azimuth);
+					printf("MAVLINK_MSG_ID_RAW_PRESSURE\n");
+					mavlink_msg_raw_pressure_decode(&message, &test_msg);
+				    printf("abs pressure: %d\n",test_msg.press_abs);
+				    printf("temperature:%d\n",test_msg.temperature);
 
 					break;
                 }
 
 				case MAVLINK_MSG_ID_HEARTBEAT:
 				{
-					printf("MAVLINK_MSG_ID_HEARTBEAT\n");
+					//printf("MAVLINK_MSG_ID_HEARTBEAT\n");
 					mavlink_msg_heartbeat_decode(&message, &(current_messages.heartbeat));
 					current_messages.time_stamps.heartbeat = get_time_usec();
 					this_timestamps.heartbeat = current_messages.time_stamps.heartbeat;
@@ -345,11 +345,11 @@ read_messages()
 
 				case MAVLINK_MSG_ID_HIGHRES_IMU:
 				{
-					printf("MAVLINK_MSG_ID_HIGHRES_IMU\n");
+					//printf("MAVLINK_MSG_ID_HIGHRES_IMU\n");
 					mavlink_msg_highres_imu_decode(&message, &(current_messages.highres_imu));
 					current_messages.time_stamps.highres_imu = get_time_usec();
 					this_timestamps.highres_imu = current_messages.time_stamps.highres_imu;
-					printf("current_messages_xacc:%f\n",current_messages.highres_imu.xacc);
+					//printf("current_messages_xacc:%f\n",current_messages.highres_imu.xacc);
 					break;
 				}
 

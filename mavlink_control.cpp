@@ -132,7 +132,7 @@ top (int argc, char **argv)
 	// create the first message to get position_target_local_ned
 	mavlink_message_t first_msg;
 	mavlink_msg_message_interval_pack(1, 0, &first_msg,
-							       25, 100000);//Request GPS_STATUS
+							       28, 100000);//Request GPS_STATUS
 	
 	int dummy =serial_port.write_message(first_msg);
     printf("write_message return dummy: %d", dummy);
