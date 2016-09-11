@@ -282,7 +282,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_BATTERY_STATUS:
 				{
-					printf("MAVLINK_MSG_ID_BATTERY_STATUS\n");
+					//printf("MAVLINK_MSG_ID_BATTERY_STATUS\n");
 					mavlink_msg_battery_status_decode(&message, &(current_messages.battery_status));
 					current_messages.time_stamps.battery_status = get_time_usec();
 					this_timestamps.battery_status = current_messages.time_stamps.battery_status;
@@ -291,7 +291,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_RADIO_STATUS:
 				{
-					printf("MAVLINK_MSG_ID_RADIO_STATUS\n");
+					//printf("MAVLINK_MSG_ID_RADIO_STATUS\n");
 					mavlink_msg_radio_status_decode(&message, &(current_messages.radio_status));
 					current_messages.time_stamps.radio_status = get_time_usec();
 					this_timestamps.radio_status = current_messages.time_stamps.radio_status;
@@ -300,7 +300,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_LOCAL_POSITION_NED:
 				{
-					printf("MAVLINK_MSG_ID_LOCAL_POSITION_NED\n");
+					//printf("MAVLINK_MSG_ID_LOCAL_POSITION_NED\n");
 					mavlink_msg_local_position_ned_decode(&message, &(current_messages.local_position_ned));
 					current_messages.time_stamps.local_position_ned = get_time_usec();
 					this_timestamps.local_position_ned = current_messages.time_stamps.local_position_ned;
@@ -309,7 +309,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
 				{
-					printf("MAVLINK_MSG_ID_GLOBAL_POSITION_INT\n");
+					//printf("MAVLINK_MSG_ID_GLOBAL_POSITION_INT\n");
 					mavlink_msg_global_position_int_decode(&message, &(current_messages.global_position_int));
 					current_messages.time_stamps.global_position_int = get_time_usec();
 					this_timestamps.global_position_int = current_messages.time_stamps.global_position_int;
@@ -318,7 +318,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_POSITION_TARGET_LOCAL_NED:
 				{
-					printf("MAVLINK_MSG_ID_POSITION_TARGET_LOCAL_NED\n");
+					//printf("MAVLINK_MSG_ID_POSITION_TARGET_LOCAL_NED\n");
 					mavlink_msg_position_target_local_ned_decode(&message, &(current_messages.position_target_local_ned));
 					current_messages.time_stamps.position_target_local_ned = get_time_usec();
 					this_timestamps.position_target_local_ned = current_messages.time_stamps.position_target_local_ned;
@@ -327,7 +327,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_POSITION_TARGET_GLOBAL_INT:
 				{
-					printf("MAVLINK_MSG_ID_POSITION_TARGET_GLOBAL_INT\n");
+					//printf("MAVLINK_MSG_ID_POSITION_TARGET_GLOBAL_INT\n");
 					mavlink_msg_position_target_global_int_decode(&message, &(current_messages.position_target_global_int));
 					current_messages.time_stamps.position_target_global_int = get_time_usec();
 					this_timestamps.position_target_global_int = current_messages.time_stamps.position_target_global_int;
@@ -340,12 +340,13 @@ read_messages()
 					mavlink_msg_highres_imu_decode(&message, &(current_messages.highres_imu));
 					current_messages.time_stamps.highres_imu = get_time_usec();
 					this_timestamps.highres_imu = current_messages.time_stamps.highres_imu;
+					printf("current_messages_xacc:%f\n",current_messages.highres_imu.xacc);
 					break;
 				}
 
 				case MAVLINK_MSG_ID_ATTITUDE:
 				{
-					printf("MAVLINK_MSG_ID_ATTITUDE\n");
+					//printf("MAVLINK_MSG_ID_ATTITUDE\n");
 					mavlink_msg_attitude_decode(&message, &(current_messages.attitude));
 					current_messages.time_stamps.attitude = get_time_usec();
 					this_timestamps.attitude = current_messages.time_stamps.attitude;
