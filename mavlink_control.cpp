@@ -133,8 +133,9 @@ top (int argc, char **argv)
 	mavlink_message_t first_msg;
 	mavlink_msg_message_interval_pack(1, 0, &first_msg,
 							       25, 100000);//Request GPS_STATUS
-	serial_port.write_message(first_msg);
-
+	
+	int dummy =serial_port.write_message(first_msg);
+    printf("write_message return dummy: %d", dummy);
 /*	mavlink_message_t second_msg;
 	mavlink_msg_message_interval_pack(1, 0, &second_msg,
 							       , 100000);

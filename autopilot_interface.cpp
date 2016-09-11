@@ -261,8 +261,7 @@ read_messages()
 			// Handle Message ID
 			switch (message.msgid)
 			{
-                
-					case MAVLINK_MSG_ID_GPS_STATUS:
+                case MAVLINK_MSG_ID_GPS_STATUS:
 				{
 					printf("MAVLINK_MSG_ID_HEARTBEAT\n");
 					mavlink_msg_gps_status_decode(&message, &gps_msg);
