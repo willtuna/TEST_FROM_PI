@@ -273,7 +273,7 @@ read_messages()
 
 				case MAVLINK_MSG_ID_SYS_STATUS:
 				{
-					printf("MAVLINK_MSG_ID_SYS_STATUS\n");
+					//printf("MAVLINK_MSG_ID_SYS_STATUS\n");
 					mavlink_msg_sys_status_decode(&message, &(current_messages.sys_status));
 					current_messages.time_stamps.sys_status = get_time_usec();
 					this_timestamps.sys_status = current_messages.time_stamps.sys_status;
@@ -631,7 +631,7 @@ start()
 	// --------------------------------------------------------------------------
 
 	// Wait for initial position ned
-	
+
 	/*
 	while ( not ( current_messages.time_stamps.local_position_ned &&
 				  current_messages.time_stamps.attitude            )  )
