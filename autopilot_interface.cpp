@@ -239,6 +239,7 @@ read_messages()
 //This is the temp msg for test gps
    mavlink_raw_pressure_t    test_msg;
 	// Blocking wait for new data
+	int id[300]={0};
 	while ( !received_all and !time_to_exit )
 	{
 		// ----------------------------------------------------------------------
@@ -257,9 +258,13 @@ read_messages()
 			// Note this doesn't handle multiple message sources.
 			current_messages.sysid  = message.sysid;
 			current_messages.compid = message.compid;
-
+			
+			if(id[message.msgid]==0){
+            printf("new msgid : %d\n", message.msgid);
+		    id[message.msgid]=1;
+			}
 			// Handle Message ID
-			switch (message.msgid)
+			/*switch (message.msgid)
 			{
                 case MAVLINK_MSG_ID_RAW_PRESSURE:
 				{
@@ -370,7 +375,7 @@ read_messages()
 
 
 			} // end: switch msgid
-
+										*/
 		} // end: if read message
 
 		// Check for receipt of all items
